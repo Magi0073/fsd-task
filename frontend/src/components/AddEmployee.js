@@ -18,7 +18,7 @@ const AddEmployee = () => {
   // Submit handler
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/employees', data);
+      const response = await axios.post('https://fsd-task-yo3a.onrender.com/api/employees', data);
       alert(response.data.message); // Success message
       reset(); // Reset form after successful submission
     } catch (error) {

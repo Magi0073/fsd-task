@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    environment:
+      - DATABASE_URL=mysql://root:gkwLNMLAAIYJojzYzHmAhAnSpPbZTemk@junction.proxy.rlwy.net:21715/railway
+    networks:
+      - employee-app-network
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - employee-app-network
+
+networks:
+  employee-app-network:
+    driver: bridge
